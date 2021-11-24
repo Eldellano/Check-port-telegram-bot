@@ -17,7 +17,7 @@ def get_text_messages(message):
         for i in rotate.show_ports():
             bot.send_message(message.from_user.id, i)
     else:
-        bot.send_message(message.from_user.id, "Я тебя не понимаю. Напиши /help.")
+        bot.send_message(message.from_user.id, "Я тебя не понимаю. Напиши  /help.")
 
 
 bot.polling(none_stop=True, interval=0)
