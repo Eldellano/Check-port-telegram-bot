@@ -14,7 +14,8 @@ def get_text_messages(message):
     if message.text == "Привет":
         bot.send_message(message.from_user.id, "Привет, чем я могу тебе помочь?")
     elif message.text == "check ports":
-        bot.send_message(message.from_user.id, rotate.show_ports())
+        for i in rotate.show_ports():
+            bot.send_message(message.from_user.id, i)
     else:
         bot.send_message(message.from_user.id, "Я тебя не понимаю. Напиши /help.")
 
