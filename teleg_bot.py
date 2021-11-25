@@ -30,4 +30,4 @@ while True:
 
         bot.polling(none_stop=True, interval=0, timeout=30)
     except:
-        time.sleep(5)
+        time.sleep(6)
