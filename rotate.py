@@ -4,20 +4,15 @@ import port_data
 ports = [8123, 51413, 9091, 9998, 22]  # add ports for check TODO: add sqlite database
 ip = get_host_ip()[1]  # get host ip
 
-# def run_rotate():
-#     output = []
-#     for port in ports:
-#         output.append(port_check(ip, str(port)))
-#     return output
 
 def run_rotate():
     output = []
     for i in port_data.DataBase().port_get():
-        #print(i)
         port = i[0]
         name = i[1]
         output.append(port_check(ip, str(port), str(name)))
     return output
+
 
 def show_ports():
     return ports

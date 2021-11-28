@@ -18,5 +18,3 @@ class DataBase:
     def port_del(self, port):
         self.cursor.execute('delete from net_ports where port = (?)', [port])
         self.conn.commit()
-
-DataBase().port_del('9091')

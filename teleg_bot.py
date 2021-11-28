@@ -6,16 +6,18 @@ import port_data
 
 bot = telebot.TeleBot('2104899805:AAEfrx02aBs_9W7tRcovz-ZgleGO1hheeXQ')  # TEST BOT!!!
 
-
 # buttons for quickly send request
 markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
 itembtn_1 = types.KeyboardButton('check ports !test!')
 itembtn_2 = types.KeyboardButton('Дополнительно')
 markup.row(itembtn_1, itembtn_2)
 
+
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
-    bot.reply_to(message, "Привет! Бот позволяет отслеживать статус твоих сетевых портов. Порты для отслеживания можно добавить и удалить.")
+    bot.reply_to(message, 'Привет! Бот позволяет отслеживать статус твоих сетевых портов. '
+                          'Порты для отслеживания можно добавить и удалить.')
+
 
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
@@ -47,7 +49,7 @@ def get_text_messages(message):
         bot.send_message(message.from_user.id, 'Я тебя не понимаю. Напиши  /help.')
 
 
-#run bot, waiting reconnect if no internet
+# run bot, waiting reconnect if no internet
 while True:
     try:
         bot.polling(none_stop=True, interval=0, timeout=30)

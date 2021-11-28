@@ -1,6 +1,7 @@
 import socket
 import stun
 
+
 # TODO: add time checkout
 def get_host_ip():
     return stun.get_ip_info()  # get host ip (ip from net)
