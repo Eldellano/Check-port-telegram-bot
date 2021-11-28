@@ -28,13 +28,16 @@ def get_text_messages(message):
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
         buttons = ['Добавить порт', 'Удалить порт', 'Назад']
         keyboard.row(*buttons)
-        bot.send_message(message.from_user.id, 'выбери пункт', reply_markup=keyboard)
+        bot.send_message(message.from_user.id, 'Выбери пункт', reply_markup=keyboard)
     elif message.text == 'Добавить порт':
         keyboard = types.ReplyKeyboardRemove(selective=False)
-        bot.send_message(message.from_user.id, 'Введи порт и емя сервиса через пробел', reply_markup=keyboard)
+        bot.send_message(message.from_user.id, 'Введи порт и имя сервиса через пробел', reply_markup=keyboard)
     elif message.text == 'Удалить порт':
         keyboard = types.ReplyKeyboardRemove(selective=False)
         bot.send_message(message.from_user.id, 'Введи порт', reply_markup=keyboard)
+    elif message.text == 'Назад':
+        keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        bot.send_message(message.from_user.id, 'Выбери пункт', reply_markup=markup)
     # add new port
     elif re.search(r'([0-9]+)(.){1}(\D+)', message.text):
         match = re.search(r'([0-9]+)(.){1}(\D+)', message.text)
