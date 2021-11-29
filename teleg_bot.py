@@ -40,22 +40,22 @@ def get_text_messages(message):
         bot.send_message(message.from_user.id, 'Выбери пункт', reply_markup=markup)
     # add new port
     elif re.search(r'([0-9]+)(.)(\D+)', message.text):
-        match = re.search(r'([0-9]+)(.)(\D+)', message.text)
+        match = re.search(r'([0-9]+)(.)(.+)', message.text)
         port_data.DataBase().port_add(match.group(1), match.group(3))
-        bot.send_message(message.from_user.id, 'Порт добавлен', reply_markup=markup)
+        bot.send_message(message.from_user.id, 'Порт ' + match.group(1) + ' добавлен', reply_markup=markup)
     # delete port
     elif re.search(r'([0-9]+)', message.text):
         match = re.search(r'([0-9]+)', message.text)
         port_data.DataBase().port_del(match.group(1))
-        bot.send_message(message.from_user.id, 'Порт удален', reply_markup=markup)
+        bot.send_message(message.from_user.id, 'Порт ' + match.group() + ' удален', reply_markup=markup)
     else:
         bot.send_message(message.from_user.id, 'Я тебя не понимаю. Напиши  /help.')
 
 
 # run bot, waiting reconnect if no internet
-while True:
-    try:
-        bot.polling(none_stop=True, interval=0, timeout=30)
-    except:  # TODO: add catch ConnectionError
-        time.sleep(6)
-# bot.polling(none_stop=True, interval=0, timeout=30)
+# while True:
+#     try:
+#         bot.polling(none_stop=True, interval=0, timeout=30)
+#     except:  # TODO: add catch ConnectionError
+#         time.sleep(6)
+bot.polling(none_stop=True, interval=0, timeout=30)
