@@ -4,7 +4,8 @@ import time
 import re
 import port_data
 
-bot = telebot.TeleBot('2104899805:AAEfrx02aBs_9W7tRcovz-ZgleGO1hheeXQ')  # TEST BOT!!!
+token = '2104899805:AAEfrx02aBs_9W7tRcovz-ZgleGO1hheeXQ'  # pun your bot token!   # TEST BOT!!!
+bot = telebot.TeleBot(token)
 
 # buttons for quickly send request
 markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -36,11 +37,10 @@ def get_text_messages(message):
         keyboard = types.ReplyKeyboardRemove(selective=False)
         bot.send_message(message.from_user.id, 'Введи порт', reply_markup=keyboard)
     elif message.text == 'Назад':
-        keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
         bot.send_message(message.from_user.id, 'Выбери пункт', reply_markup=markup)
     # add new port
-    elif re.search(r'([0-9]+)(.){1}(\D+)', message.text):
-        match = re.search(r'([0-9]+)(.){1}(\D+)', message.text)
+    elif re.search(r'([0-9]+)(.)(\D+)', message.text):
+        match = re.search(r'([0-9]+)(.)(\D+)', message.text)
         port_data.DataBase().port_add(match.group(1), match.group(3))
         bot.send_message(message.from_user.id, 'Порт добавлен', reply_markup=markup)
     # delete port
