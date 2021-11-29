@@ -1,8 +1,7 @@
 from checker import port_check, get_host_ip
 import port_data
 
-ports = [8123, 51413, 9091, 9998, 22]  # add ports for check TODO: add sqlite database
-ip = get_host_ip()[1]  # get host ip
+ip = get_host_ip()  # get host ip
 
 
 def run_rotate():
@@ -12,7 +11,3 @@ def run_rotate():
         name = i[1]
         output.append(port_check(ip, str(port), str(name)))
     return output
-
-
-def show_ports():
-    return ports
