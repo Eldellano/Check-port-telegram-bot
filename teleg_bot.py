@@ -3,7 +3,7 @@ import rotate
 import time
 import re
 import port_data
-# TODO: add conteiner autostart
+
 token = '2104899805:AAEfrx02aBs_9W7tRcovz-ZgleGO1hheeXQ'  # pun your bot token!   # TEST BOT!!!
 bot = telebot.TeleBot(token)
 
