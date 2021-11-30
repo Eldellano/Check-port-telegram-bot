@@ -3,7 +3,7 @@ import rotate
 import time
 import re
 import port_data
-
+# TODO: add conteiner autostart
 token = '2104899805:AAEfrx02aBs_9W7tRcovz-ZgleGO1hheeXQ'  # pun your bot token!   # TEST BOT!!!
 bot = telebot.TeleBot(token)
 
@@ -53,9 +53,9 @@ def get_text_messages(message):
 
 
 # run bot, waiting reconnect if no internet
-# while True:
-#     try:
-#         bot.polling(none_stop=True, interval=0, timeout=30)
-#     except:  # TODO: add catch ConnectionError
-#         time.sleep(6)
-bot.polling(none_stop=True, interval=0, timeout=30)
+while True:
+    try:
+        bot.polling(none_stop=True, interval=0, timeout=30)
+    except:  # TODO: add catch ConnectionError
+        time.sleep(6)
+# bot.polling(none_stop=True, interval=0, timeout=30)
