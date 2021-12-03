@@ -4,13 +4,13 @@ import time
 import re
 import port_data
 
-token = '2104899805:AAEfrx02aBs_9W7tRcovz-ZgleGO1hheeXQ'  # pun your bot token!   # TEST BOT!!!
+token = '2113531172:AAHQYikxVcodytj5l3vdLdQ8Lkp5T9HUqRc'  # pun your bot token!
 bot = telebot.TeleBot(token)
 
 # buttons for quickly send request
 markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-itembtn_1 = types.KeyboardButton('check ports !test!')
-itembtn_2 = types.KeyboardButton('Дополнительно')
+itembtn_1 = types.KeyboardButton('check ports')
+itembtn_2 = types.KeyboardButton('extra')
 markup.row(itembtn_1, itembtn_2)
 
 
@@ -22,21 +22,21 @@ def send_welcome(message):
 
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
-    if message.text == 'check ports !test!':
+    if message.text == 'check ports':
         for i in rotate.run_rotate():
             bot.send_message(message.from_user.id, i, reply_markup=markup)
-    elif message.text == 'Дополнительно':
+    elif message.text == 'extra':
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        buttons = ['Добавить порт', 'Удалить порт', 'Назад']
+        buttons = ['Add port', 'Del port', 'Back']
         keyboard.row(*buttons)
         bot.send_message(message.from_user.id, 'Выбери пункт', reply_markup=keyboard)
-    elif message.text == 'Добавить порт':
+    elif message.text == 'Add port':
         keyboard = types.ReplyKeyboardRemove(selective=False)
         bot.send_message(message.from_user.id, 'Введи порт и имя сервиса через пробел', reply_markup=keyboard)
-    elif message.text == 'Удалить порт':
+    elif message.text == 'Del port':
         keyboard = types.ReplyKeyboardRemove(selective=False)
         bot.send_message(message.from_user.id, 'Введи порт', reply_markup=keyboard)
-    elif message.text == 'Назад':
+    elif message.text == 'Back':
         bot.send_message(message.from_user.id, 'Выбери пункт', reply_markup=markup)
     # add new port
     elif re.search(r'([0-9]+)(.)(\D+)', message.text):
