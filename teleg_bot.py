@@ -4,7 +4,7 @@ import time
 import re
 import port_data
 
-token = '2113531172:AAHQYikxVcodytj5l3vdLdQ8Lkp5T9HUqRc'  # pun your bot token!
+token = ''  # pun your bot token!
 bot = telebot.TeleBot(token)
 
 # buttons for quickly send request
